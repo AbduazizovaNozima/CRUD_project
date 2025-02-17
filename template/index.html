@@ -1,0 +1,41 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+</head>
+<body>
+
+    <h1>Talabalar Ro'yxati</h1>
+
+    <!-- Talabalar ro'yxatini ko'rsatish -->
+    <ul>
+        {% for student in Student %}
+            <li>{{ student.full_name }} - {{ student.age }} yosh, {{ student.degree }} - Tug'ilgan sana: {{ student.birth_date }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Yangi Talaba Qo'shish</h2>
+
+    <!-- Yangi talaba qo'shish formasi -->
+    <form method="POST">
+        {% csrf_token %}
+        <label for="full_name">F.I.Sh.:</label>
+        <input type="text" id="full_name" name="full_name" required><br><br>
+
+        <label for="age">Yosh:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="degree">Mutaxassislik:</label>
+        <input type="text" id="degree" name="degree" required><br><br>
+
+        <label for="birth_date">Tug'ilgan sana:</label>
+        <input type="date" id="birth_date" name="birth_date" required><br><br>
+
+        <button type="submit">Saqlash</button>
+    </form>
+
+</body>
+</html>
